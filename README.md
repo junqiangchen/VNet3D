@@ -26,7 +26,7 @@ the trained loss result
 the Vnet3D model
 ![](vnet.PNG)
 the trained process:0 epoch——GTMask and PredictMask
-![](gt_0_epoch.PNG)
+![](gt_0_epoch.png)
 ![](predict_0_epoch.png)
 1000 epoch——GTMask and PredictMask
 ![](gt_1000_epoch.png)
