@@ -27,16 +27,16 @@ the Vnet3D model
 ![](vnet.PNG)
 the trained process:0 epoch——GTMask and PredictMask
 ![](gt_0_epoch.PNG)
-![](predict_0_epoch.PNG)
+![](predict_0_epoch.png)
 1000 epoch——GTMask and PredictMask
-![](gt_1000_epoch.PNG)
-![](predict_1000_epoch.PNG)
+![](gt_1000_epoch.png)
+![](predict_1000_epoch.png)
 10000 epoch——GTMask and PredictMask
-![](gt_10000_epoch.PNG)
-![](predict_10000_epoch.PNG)
+![](gt_10000_epoch.png)
+![](predict_10000_epoch.png)
 the predict result
-![](mask_15_epoch.PNG)
-![](src_15_epoch.PNG)
+![](mask_15_epoch.png)
+![](src_15_epoch.png)
 ## Contact
 * https://github.com/junqiangchen
 * email: 1207173174@qq.com
