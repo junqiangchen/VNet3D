@@ -1,4 +1,5 @@
-from Vnet.model_vnet3d import Vnet3dModule
+from promise2012.Vnet.model_vnet3d import Vnet3dModule
+from promise2012.Vnet.util import convertMetaModelToPbModel
 import numpy as np
 import pandas as pd
 import cv2
@@ -44,5 +45,9 @@ def predict0():
                 result)
 
 
+def meta2pd():
+    convertMetaModelToPbModel(meta_model="model\\Vnet3dModule.pd", pb_model="model")
+            
 train()
 #predict0()
+#meta2pd()
