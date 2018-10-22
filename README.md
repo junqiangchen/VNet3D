@@ -20,6 +20,8 @@ if you trained data path is not D:\Data\PROMISE2012\,you should change the csv f
 **5、download trained model:https://pan.baidu.com/s/1B869czIPfIL8wxDKgIednQ, passworld:0nb6**
 
 ## Result
+MICCAI Grand Challenge Result
+![](challege.jpg)
 
 the trained loss result
 ![](loss.PNG)
