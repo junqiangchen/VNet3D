@@ -3,6 +3,7 @@
 ![](promise12_header.png)
 
 ## How to Use
+(re)implemented the model with tensorflow in the paper of "Milletari, F., Navab, N., & Ahmadi, S. A. (2016) V-net: Fully convolutional neural networks for volumetric medical image segmentation.3DV 2016"
 
 **1、download trained data,download dataset：https://promise12.grand-challenge.org/download/**
 
