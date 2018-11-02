@@ -5,7 +5,7 @@
 ## How to Use
 (re)implemented the model with tensorflow in the paper of "Milletari, F., Navab, N., & Ahmadi, S. A. (2016) V-net: Fully convolutional neural networks for volumetric medical image segmentation.3DV 2016"
 
-**1、download trained data,download dataset：https://promise12.grand-challenge.org/download/ ,if you can't download it,i have shared it:https://pan.baidu.com/s/1y9YAAQKdD3OMOMyamx9MdA, passworld:whbf**
+**1、download trained data,download dataset：https://promise12.grand-challenge.org/download/ ,if you can't download it,i have shared it:https://pan.baidu.com/s/1y9YAAQKdD3OMOMyamx9MdA, password:whbf**
 
 **2、the file of promise12Vnet3dImage.csv,is like this format:
   D:\Data\PROMISE2012\Vnet3d_data\Vnet3d_patch_train\image/0_10
@@ -18,7 +18,7 @@ if you trained data path is not D:\Data\PROMISE2012\,you should change the csv f
 
 **4、training the model on the GTX1080,it take 40 hours,and i also attach the trained model in the project,you also just use the vnet3d_train_predict.py file to predict,and get the segmentation result.**
 
-**5、download trained model:https://pan.baidu.com/s/1B869czIPfIL8wxDKgIednQ, passworld:0nb6**
+**5、download trained model:https://pan.baidu.com/s/1B869czIPfIL8wxDKgIednQ, password:0nb6**
 
 ## Result
 MICCAI Grand Challenge Result
