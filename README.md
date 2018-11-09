@@ -22,7 +22,7 @@ if you trained data path is not D:\Data\PROMISE2012\,you should change the csv f
 
 ## Result
 MICCAI Grand Challenge Result
-![](challegevnet.jpg)
+![](leadboard9.PNG)
 
 the trained loss result
 ![](loss.PNG)
