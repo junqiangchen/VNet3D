@@ -222,7 +222,7 @@ class Vnet3dModule(object):
             loss = -tf.reduce_mean(intersection / denominator)
         return loss
 
-    def train(self, train_images, train_lanbels, model_path, logs_path, learning_rate,
+    def train(self, train_images, train_labels, model_path, logs_path, learning_rate,
               dropout_conv=0.8, train_epochs=10000, batch_size=1):
         train_op = tf.train.AdamOptimizer(self.lr).minimize(self.cost)
 
@@ -241,7 +241,7 @@ class Vnet3dModule(object):
 
         for i in range(train_epochs):
             # get new batch
-            batch_xs_path, batch_ys_path, index_in_epoch = _next_batch(train_images, train_lanbels, batch_size,
+            batch_xs_path, batch_ys_path, index_in_epoch = _next_batch(train_images, train_labels, batch_size,
                                                                        index_in_epoch)
             batch_xs = np.empty((len(batch_xs_path), self.image_depth, self.image_height, self.image_width,
                                  self.channels))
