@@ -47,7 +47,7 @@ def deconv_relu(x, kernal, scope=None):
 def conv_sigmod(x, kernal, scope=None):
     with tf.name_scope(scope):
         W = weight_xavier_init(shape=kernal, n_inputs=kernal[0] * kernal[1] * kernal[2] * kernal[3],
-                               n_outputs=kernal[-1], activefunction='sigomd', variable_name=scope + 'W')
+                               n_outputs=kernal[-1], activefunction='sigmoid', variable_name=scope + 'W')
         B = bias_variable([kernal[-1]], variable_name=scope + 'B')
         conv = conv3d(x, W) + B
         conv = tf.nn.sigmoid(conv)
