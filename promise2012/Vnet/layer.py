@@ -7,9 +7,9 @@ import cv2
 
 
 # Weight initialization (Xavier's init)
-def weight_xavier_init(shape, n_inputs, n_outputs, activefunction='sigmod', uniform=True, variable_name=None):
+def weight_xavier_init(shape, n_inputs, n_outputs, activefunction='sigmoid', uniform=True, variable_name=None):
     with tf.device('/cpu:0'):
-        if activefunction == 'sigmod':
+        if activefunction == 'sigmoid':
             if uniform:
                 init_range = tf.sqrt(6.0 / (n_inputs + n_outputs))
                 initial = tf.random_uniform(shape, -init_range, init_range)
