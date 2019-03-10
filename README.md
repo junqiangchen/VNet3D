@@ -20,7 +20,7 @@ if you trained data path is not D:\Data\PROMISE2012\,you should change the csv f
 
 **5、download trained model:https://pan.baidu.com/s/1B869czIPfIL8wxDKgIednQ, password:0nb6**
 
-**6、
+**6、download test data:**
 
 ## Result
 MICCAI Grand Challenge Result
