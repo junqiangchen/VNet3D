@@ -234,7 +234,7 @@ class Vnet3dModule(object):
         tf.summary.scalar("loss", self.cost)
         tf.summary.scalar("accuracy", self.accuracy)
         merged_summary_op = tf.summary.merge_all()
-        sess = tf.InteractiveSession(config=tf.ConfigProto(allow_soft_placement=True, log_device_placement=True))
+        sess = tf.InteractiveSession(config=tf.ConfigProto(allow_soft_placement=True, log_device_placement=False))
         summary_writer = tf.summary.FileWriter(logs_path, graph=tf.get_default_graph())
         sess.run(init)
 
