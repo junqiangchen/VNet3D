@@ -210,6 +210,8 @@ class Vnet3dModule(object):
             self.sess = tf.InteractiveSession()
             self.sess.run(init)
             saver.restore(self.sess, model_path)
+        else:
+          self.restore_training(model_path)
 
     def __get_cost(self, cost_name):
         Z, H, W, C = self.Y_gt.get_shape().as_list()[1:]
@@ -320,3 +322,18 @@ class Vnet3dModule(object):
         result = np.clip(result, 0, 255).astype('uint8')
         result = np.reshape(result, (test_images.shape[0], test_images.shape[1], test_images.shape[2]))
         return result
+      
+    def restore_training(self, model_path):
+        print("\nReading checkpoints...")
+
+        ckpt = tf.train.get_checkpoint_state(model_path)
+        if ckpt and ckpt.model_checkpoint_path:
+            init = tf.global_variables_initializer()
+            saver = tf.train.Saver()
+            self.sess = tf.Session()
+            self.sess.run(init)
+            saver.restore(self.sess, ckpt.model_checkpoint_path)
+            print('Loading success, global training epoch is %s' % (len(ckpt.all_model_checkpoint_paths)-1))
+        else:
+            print('No checkpoint file found.')
+            return
