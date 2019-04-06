@@ -211,7 +211,7 @@ class Vnet3dModule(object):
             self.sess.run(init)
             saver.restore(self.sess, model_path)
         else:
-          self.restore_training(model_path)
+            self.restore_training(model_path)
 
     def __get_cost(self, cost_name):
         Z, H, W, C = self.Y_gt.get_shape().as_list()[1:]
