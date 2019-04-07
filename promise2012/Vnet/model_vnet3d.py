@@ -204,14 +204,14 @@ class Vnet3dModule(object):
                                        self.phase, self.drop)
         self.cost = self.__get_cost(costname)
         self.accuracy = -self.__get_cost(costname)
+        self.global_epoch = 0
+
         if inference:
-            init = tf.global_variables_initializer()
-            saver = tf.train.Saver()
-            self.sess = tf.InteractiveSession()
-            self.sess.run(init)
-            saver.restore(self.sess, model_path)
+            self.restore_training_2(model_path)
         else:
-            self.restore_training(model_path)
+            n_epoch = self.restore_training_2(model_path)
+            if n_epoch:
+                self.global_epoch = self.global_epoch + n_epoch
 
     def __get_cost(self, cost_name):
         Z, H, W, C = self.Y_gt.get_shape().as_list()[1:]
@@ -229,7 +229,7 @@ class Vnet3dModule(object):
         train_op = tf.train.AdamOptimizer(self.lr).minimize(self.cost)
 
         init = tf.global_variables_initializer()
-        saver = tf.train.Saver(tf.all_variables(), max_to_keep=10)
+        saver = tf.train.Saver(max_to_keep=2)
 
         tf.summary.scalar("loss", self.cost)
         tf.summary.scalar("accuracy", self.accuracy)
@@ -292,7 +292,7 @@ class Vnet3dModule(object):
                 result = result.astype(np.float32)
                 save_images(result, [8, 8], path='img/Vnet/' + 'predict_%d_epoch.png' % (i))
 
-                save_path = saver.save(sess, model_path, global_step=i)
+                save_path = saver.save(sess, model_path, global_step=self.global_epoch+i+1)
                 print("Model saved in file:", save_path)
                 if i % (DISPLAY_STEP * 10) == 0 and i:
                     DISPLAY_STEP *= 10
@@ -306,8 +306,6 @@ class Vnet3dModule(object):
             summary_writer.add_summary(summary, i)
         summary_writer.close()
 
-        save_path = saver.save(sess, model_path)
-        print("Model saved in file:", save_path)
 
     def prediction(self, test_images):
         test_images = np.reshape(test_images, (test_images.shape[0], test_images.shape[1], test_images.shape[2], 1))
@@ -323,7 +321,7 @@ class Vnet3dModule(object):
         result = np.reshape(result, (test_images.shape[0], test_images.shape[1], test_images.shape[2]))
         return result
       
-    def restore_training(self, model_path):
+    def restore_training_2(self, model_path):
         print("\nReading checkpoints...")
 
         ckpt = tf.train.get_checkpoint_state(model_path)
@@ -332,8 +330,13 @@ class Vnet3dModule(object):
             saver = tf.train.Saver()
             self.sess = tf.Session()
             self.sess.run(init)
+
+            print('Checkpoint file: {}'.format(ckpt.model_checkpoint_path))
             saver.restore(self.sess, ckpt.model_checkpoint_path)
-            print('Loading success, global training epoch is %s' % (len(ckpt.all_model_checkpoint_paths)-1))
+            n_epoch = int(ckpt.model_checkpoint_path.split('/')[-1].split('-')[-1])
+
+            print('Loading success, global training epoch is: {}\n'.format(n_epoch))
+            return n_epoch
         else:
-            print('No checkpoint file found.')
+            print('No checkpoint file found.\n')
             return
