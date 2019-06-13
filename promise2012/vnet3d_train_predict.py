@@ -3,6 +3,8 @@ from promise2012.Vnet.util import convertMetaModelToPbModel
 import numpy as np
 import pandas as pd
 import cv2
+import tensorflow as tf
+tf.logging.set_verbosity(tf.logging.ERROR)
 
 
 def train():
@@ -20,8 +22,8 @@ def train():
     imagedata = imagedata[perm]
     maskdata = maskdata[perm]
 
-    Vnet3d = Vnet3dModule(128, 128, 64, channels=1, costname="dice coefficient")
-    Vnet3d.train(imagedata, maskdata, "model\\Vnet3dModule.pd", "log\\", 0.001, 0.7, 100000, 1)
+    Vnet3d = Vnet3dModule(128, 128, 64, channels=1, costname="dice coefficient", model_path="model")
+    Vnet3d.train(imagedata, maskdata, "model\\my_model", "log\\", 0.001, 0.7, 100000, 1)
 
 
 def predict0():
