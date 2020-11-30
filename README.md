@@ -27,7 +27,7 @@ if you trained data path is not D:\Data\PROMISE2012\,you should change the csv f
 
 **4、training the model on the GTX1080,it take 40 hours,and i also attach the trained model in the project,you also just use the vnet3d_train_predict.py file to predict,and get the segmentation result.**
 
-**5、download trained model:https://pan.baidu.com/s/1B869czIPfIL8wxDKgIednQ, password:0nb6**
+**5、download trained model:https://pan.baidu.com/s/1kQ1SCVuBK6xJFR7cyKN7XQ password:0ytv**
 
 **6、download test data: https://pan.baidu.com/s/1pDCQzTxUmyYdwDinBJKTuA, password:s0jt**
 
